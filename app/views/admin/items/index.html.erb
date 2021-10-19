@@ -1,2 +1,30 @@
-<h1>Admin::Items#index</h1>
+<h1>商品一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+  <% @items.each do |item| %>
+
+  <tbody>
+    <tr>
+      <td><%= item.id %></td>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+      <td><%= item.genre.name %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+
+<!--admin newへのリンク作成 -->
+<h2><%= link_to "新規登録", new_admin_item_path %></h2>
 <p>Find me in app/views/admin/items/index.html.erb</p>

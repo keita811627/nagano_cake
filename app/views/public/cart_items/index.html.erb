@@ -1,2 +1,28 @@
-<h1>CartItems#index</h1>
+<h1>ショッピングカート</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+  <% @cart_items.each do |cart_item| %>
+  <tbody>
+    <tr>
+      <td><%= attachment_image_tag cart_item, :image, size: '100x100' %><%= cart_item.name %></td>
+      <td><%= cart_item.price %></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+
 <p>Find me in app/views/cart_items/index.html.erb</p>

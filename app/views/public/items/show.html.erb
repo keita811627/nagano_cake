@@ -1,2 +1,15 @@
-<h1>Items#show</h1>
+<h1>顧客側　商品詳細</h1>
+
+ <%= attachment_image_tag @item, :image, size: '500x500' %>
+ <h1><%= @item.name %></h1>
+ <h2><%= @item.introduction %></h2>
+ <h2><%= @item.price %>円</h2>
+
+   <%= form_with model: @cart_item, url: public_cart_items_path, local:true do |f| %>
+    <%= f.hidden_field :item_id, value: @item.id %>
+    <%= f.select :amount, *[1..10] %>
+    <%= f.submit "カートに入れる" %>
+   <% end %>
+
+
 <p>Find me in app/views/items/show.html.erb</p>

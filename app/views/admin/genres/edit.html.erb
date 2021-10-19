@@ -1,2 +1,10 @@
-<h1>Admin::Genres#edit</h1>
+<h1>ジャンル編集</h1>
+<!-- form_withを利用、編集機能作成  -->
+<%= form_with model: @genre, url: admin_genre_path(@genre.id), local:true do |f| %>
+  <h4>ジャンル名
+  <%= f.text_field :name %>
+  <%= f.submit "変更を保存" %>
+  </h4>
+<% end %>
+
 <p>Find me in app/views/admin/genres/edit.html.erb</p>

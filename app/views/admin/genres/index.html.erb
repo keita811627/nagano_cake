@@ -1,2 +1,30 @@
-<h1>Admin::Genres#index</h1>
+<h1>ジャンル一覧・追加</h1>
+
+<!--ジャンル投稿機能をform_withで作成 -->
+<%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
+  <h4>ジャンル名
+  <%= f.text_field :name %>
+  <%= f.submit "新規登録" %>
+  </h4>
+<% end %>
+
+<!--ジャンル一覧　table -->
+  <table>
+    <thead>
+      <tr>
+        <th>ジャンル</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <!-- eachで繰り返し処理  -->
+    <% @genres.each do |genre|%>
+    <tbody>
+      <tr>
+        <td><%= genre.name %></td>
+        <td><%= link_to "編集する", edit_admin_genre_path(genre.id) %></td>
+      </tr>
+     </tbody>
+    <% end %>
+  </table>
+
 <p>Find me in app/views/admin/genres/index.html.erb</p>

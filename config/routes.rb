@@ -17,29 +17,22 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#top'
   end
+  
   namespace :public do
+    
   resources :addresses
-  end
-  namespace :public do
   post 'orders/confirm' => 'orders#confirm'
   get 'orders/complete'
   resources :orders
-
-  end
-  namespace :public do
+  
   resources :cart_items
   delete 'cart_items/destroy_all'
-
-  end
-  namespace :public do
   get 'unsubscribe' => 'customers#unsubscribe'
   patch 'customers/withdraw'
-  resources :customers
-  end
-  namespace :public do
+  resource :customers
+ 
   resources :items
-  end
-  namespace :public do
+
   get 'homes/about'
   end
   ##publicのhomesページをルートパス/に設定
