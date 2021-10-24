@@ -17,20 +17,21 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#top'
   end
-  
+
   namespace :public do
-    
+
   resources :addresses
   post 'orders/confirm' => 'orders#confirm'
   get 'orders/complete'
   resources :orders
-  
+
   resources :cart_items
   delete 'cart_items/destroy_all'
+  
   get 'unsubscribe' => 'customers#unsubscribe'
   patch 'customers/withdraw'
   resource :customers
- 
+
   resources :items
 
   get 'homes/about'

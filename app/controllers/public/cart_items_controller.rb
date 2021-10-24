@@ -11,10 +11,10 @@ class Public::CartItemsController < ApplicationController
 
   def destroy_all
   end
-　 ##item.showから送られてきたデータを受け取る
+   ##item.showから送られてきたデータを受け取る
   def create
     @cart_item = CartItem.new(cart_item_params)
-    ##customer_idにログインしているユーザの情報を与える
+  ##customer_idにログインしているユーザの情報を与え
     @cart_item.customer_id = current_customer.id
     @cart_item.save
     redirect_to public_cart_items_path

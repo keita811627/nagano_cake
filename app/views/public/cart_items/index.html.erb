@@ -14,9 +14,9 @@
   <% @cart_items.each do |cart_item| %>
   <tbody>
     <tr>
-      <td><%= attachment_image_tag cart_item, :image, size: '100x100' %><%= cart_item.name %></td>
-      <td><%= cart_item.price %></td>
-      <td></td>
+      <td><%= attachment_image_tag cart_item, :item.image, size: '100x100' %><%= cart_item.item.name %></td>
+      <td><%= cart_item.item.price %></td>
+      <td><%= cart_item.item.amount %></td>
       <td></td>
       <td></td>
     </tr>
