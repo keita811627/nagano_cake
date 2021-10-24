@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   namespace :public do
 
   resources :addresses
+  
   post 'orders/confirm' => 'orders#confirm'
   get 'orders/complete'
   resources :orders
