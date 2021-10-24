@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   resources :orders
 
   resources :cart_items
-  delete 'cart_items/destroy_all'
+  delete 'cart_items' => 'cart_items#destroy_all'
+  
   
   get 'unsubscribe' => 'customers#unsubscribe'
   patch 'customers/withdraw'
