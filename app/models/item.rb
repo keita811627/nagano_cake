@@ -13,5 +13,13 @@ class Item < ApplicationRecord
        "販売停止中"
      end
    end
+   
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :image, presence: true
+  validates :genre_id, presence: true
+  validates :price, presence: true
+  validates :is_active, presence: true
+   
 
 end

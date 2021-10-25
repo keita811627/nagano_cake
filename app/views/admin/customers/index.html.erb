@@ -1,2 +1,24 @@
-<h1>Admin::Customers#index</h1>
+<h1>会員一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+  <% @customers.each do |customer| %>
+  <tbody>
+    <tr>
+      <td><%= customer.id %></td>
+      <td><%= customer.last_name + customer.first_name %></td>
+      <td><%= customer.email %></td>
+      <td></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
 <p>Find me in app/views/admin/customers/index.html.erb</p>

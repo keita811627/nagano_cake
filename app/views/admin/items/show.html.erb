@@ -1,13 +1,18 @@
 <h1>管理者　商品詳細画面</h1>
+<div class="admin_item_show">
+  <div>
+     <p><%= attachment_image_tag @item, :image, size: '400x400' %></p>
+  </div>
+  <div class="admin_item_box">
+     <h2>商品名：<%= @item.name %></h2>
+     <p>商品説明：<%= @item.introduction %></p>
+     <!--アソシエーション　ジャンルカラムを指定 -->
+     <h4>ジャンル：<%= @item.genre.name %></h4>
+     <p><%= @item.price %><span>円</p>
+     <p><%= @item.price * 1.1 %>円</p>
+     <!-- モデルでis_active_textでメソッドを作成している為選択した方が表示される -->
+     <p><%= @item.is_active_text %></p>
 
-<p><%= attachment_image_tag @item, :image %></p>
-<h2>商品名：<%= @item.name %></h2>
-<p><%= @item.introduction %></p>
-<!--アソシエーション　ジャンルカラムを指定 -->
-<h4>ジャンル：<%= @item.genre.name %></h4>
-<p><%= @item.price %><span>円</span></p>
-<!-- モデルでis_active_textでメソッドを作成している為選択した方が表示される -->
-<p><%= @item.is_active_text %></p>
+     <h2><%= link_to "編集する", edit_admin_item_path(@item.id) %></h2>
 
-<h2><%= link_to "編集する", edit_admin_item_path(@item.id) %></h2>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+</div>

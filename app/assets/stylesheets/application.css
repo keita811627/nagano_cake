@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+
+.admin_item_show {
+  display: flex;
+  justify-content: center;
+}
+
+.admin_item_box {
+  margin-left: 150px;
+}

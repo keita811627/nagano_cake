@@ -11,7 +11,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    
     @order = Order.new(order_params)
+    ##ifを利用しラジオボタンの選択肢を分岐
+    ## orderの中のaddress_optionが0であると定義
     if params[:order][:address_option] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address

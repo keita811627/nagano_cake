@@ -1,4 +1,10 @@
 <h1>管理者　商品新規登録画面</h1>
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました
+  <% @item.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
 
 <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
   <h4>商品画像
@@ -23,7 +29,7 @@
     <%= f.label :is_active, "販売停止中", {value: :true} %>
   </h4>
   <p>
-    <%= f.submit '登録'%>
+    <%= f.submit '新規登録'%>
   </p>
 <% end %>
 <p>Find me in app/views/admin/items/new.html.erb</p>

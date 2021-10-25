@@ -1,9 +1,18 @@
 <h1>ジャンル一覧・追加</h1>
 
+<% if @genre.errors.any? %>
+  <%= @genre.errors.count %>件のエラーが発生しました
+  <% @genre.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
+
 <!--ジャンル投稿機能をform_withで作成 -->
 <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
   <h4>ジャンル名
-  <%= f.text_field :name %>
+  <%= f.text_field :name, :placeholder => "ジャンル名" %>
+
   <%= f.submit "新規登録" %>
   </h4>
 <% end %>
@@ -27,4 +36,3 @@
     <% end %>
   </table>
 
-<p>Find me in app/views/admin/genres/index.html.erb</p>
