@@ -6,6 +6,8 @@ class Order < ApplicationRecord
 
   belongs_to :customer
 
+  has_many :order_datails, dependent: :destroy
+
   def add_tax_price
        (self.price * 1.10).round
   end

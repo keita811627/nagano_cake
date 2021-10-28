@@ -58,11 +58,19 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.save
     @cart_items = current_customer.cart_items
+    @cart_items.each do |cart_item|
+    order_datail = @order.order_datails.new
+    order_datail.item_id = cart_item.item_id
+    order_datail.price = cart_item.item.price
+    order_datail.amount = cart_item.amount
+    order_datail.save
+    end
     @cart_items.destroy_all
     redirect_to public_orders_complete_path
   end
 
   def index
+    @orders = current_customer.orders.all
   end
 
   def show
