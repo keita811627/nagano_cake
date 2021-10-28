@@ -11,8 +11,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    
+
     @order = Order.new(order_params)
+    @cart_items = current_customer.cart_items
     ##ifを利用しラジオボタンの選択肢を分岐
     ## orderの中のaddress_optionが0であると定義
     if params[:order][:address_option] == "0"
@@ -38,18 +39,27 @@ class Public::OrdersController < ApplicationController
       else
         render :new
       end
+
     end
+      #total_paymentに商品金額を追加
+      @order.total_payment = 0
+      current_customer.cart_items.map {|cart| @order.total_payment += cart.sub_total}
+     # byebug
+
 
   end
 
   def complete
+
   end
 
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
-    redirect_to public_orders_confirm_path
+    @cart_items = current_customer.cart_items
+    @cart_items.destroy_all
+    redirect_to public_orders_complete_path
   end
 
   def index

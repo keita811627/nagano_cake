@@ -10,13 +10,42 @@
         <th colspan="4"></th>
       </tr>
     </thead>
+    <% @cart_items.each do |cart_item| %>
     <tbody>
       <tr>
-        <td></td>
+        <td><%= attachment_image_tag cart_item.item, :image, size: '70x70' %></td>
+        <td><%= cart_item.item.name %></td>
+        <td><%= cart_item.item.add_tax_price %>円</td>
+        <td><%= cart_item.amount %></td>
+        <td><%= cart_item.item.add_tax_price * cart_item.amount %></td>
       </tr>
     </tbody>
+    <% end %>
+  </table>
+  <table>
+    <tr>
+      <td>送料</td>
+      <td>800
+      <% @shipping_cost = 800 %>
+      </td>
+    </tr>
+    <tr>
+      <td>商品合計</td>
+      <td>
+        <% @num = 0 %>
+        <% @cart_items.each do |cart_item| %>
+        <% @num += cart_item.item.add_tax_price * cart_item.amount %>
+        <% end %>
+        <%= @num %>円
+      </td>
+    </tr>
+    <tr>
+      <td>請求金額</td>
+      <td><%= @num + @shipping_cost %>円</td>
+    </tr>
   </table>
 </div>
+
 
 <div>
   <h3>支払い方法</h3>
@@ -25,4 +54,13 @@
   <%= @order.address %>
 </div>
 
-<p>Find me in app/views/orders/confirm.html.erb</p>
+<%= form_with model: @order, url: public_orders_path, local:true do |f| %>
+  <%= f.hidden_field :postal_code %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :total_payment %>
+  <%= f.hidden_field :payment_method %>
+  <%= f.hidden_field :customer_id %>
+  <%= f.hidden_field :shipping_cost, value: @shipping_cost %>
+  <%= f.submit "注文を確定する" %>
+<% end %>

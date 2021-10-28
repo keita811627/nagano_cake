@@ -8,8 +8,8 @@
      <p>商品説明：<%= @item.introduction %></p>
      <!--アソシエーション　ジャンルカラムを指定 -->
      <h4>ジャンル：<%= @item.genre.name %></h4>
-     <p><%= @item.price %><span>円</p>
-     <p><%= @item.price * 1.1 %>円</p>
+     <p>税込み価格：<%= @item.add_tax_price.to_s(:price) %>円</p>
+     <p>（税抜き価格）（<%= @item.price %>）円</p>
      <!-- モデルでis_active_textでメソッドを作成している為選択した方が表示される -->
      <p><%= @item.is_active_text %></p>
 
