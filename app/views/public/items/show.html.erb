@@ -3,7 +3,7 @@
  <%= attachment_image_tag @item, :image, size: '500x500' %>
  <h1><%= @item.name %></h1>
  <h2><%= @item.introduction %></h2>
- <h2><%= @item.price %>円</h2>
+ <h2><%= @item.add_tax_price %>円(税込み)</h2>
 
    <%= form_with model: @cart_item, url: public_cart_items_path, local:true do |f| %>
     <%= f.hidden_field :item_id, value: @item.id %>
@@ -12,4 +12,4 @@
    <% end %>
 
 
-<p>Find me in app/views/items/show.html.erb</p>
+

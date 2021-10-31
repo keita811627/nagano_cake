@@ -13,7 +13,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
 
       ## Rememberable
       t.datetime :remember_created_at
-      
+
       ## create カラムの追加
       t.string :last_name
       t.string :first_name
@@ -22,7 +22,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string :postal_code
       t.string :address
       t.string :telephone_number
-      t.boolean :is_active
+      t.boolean :is_active, default: true, null: false
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false

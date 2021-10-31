@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
-    ## present?　これで値が入っているかどうかを指定することができる
+    ## present?これで値が入っているかどうかを指定することができる
     if current_customer.cart_items.present?
       @order = Order.new
       @user = current_customer
@@ -42,8 +42,8 @@ class Public::OrdersController < ApplicationController
 
     end
       #total_paymentに商品金額を追加
-      @order.total_payment = 0
-      current_customer.cart_items.map {|cart| @order.total_payment += cart.sub_total}
+      #@order.total_payment = 0
+      #current_customer.cart_items.map {|cart| @order.total_payment += cart.sub_total}
      # byebug
 
 
@@ -70,16 +70,18 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders.all
+    @orders = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_datails = @order.order_datails
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :total_payment, :payment_method)
+    params.require(:order).permit(:postal_code, :address, :name, :total_payment, :payment_method, :shipping_cost)
   end
 
 end

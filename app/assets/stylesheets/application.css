@@ -29,3 +29,34 @@
   justify-content: center;
   margin-top : 350px;
 }
+
+.top {
+  display: flex;
+  justify-content: center;
+  margin-top : 150px;
+}
+
+.about {
+  display: flex;
+  justify-content: center;
+}
+
+.about-top {
+  display: flex;
+  justify-content: center;
+}
+
+.order1 {
+  display: flex;
+  justify-content: center;
+}
+
+.order2 {
+  display: flex;
+  justify-content: center;
+}
+
+.admin_order2 {
+  display: flex;
+
+}

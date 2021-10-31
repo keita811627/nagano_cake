@@ -1,2 +1,73 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<h1>注文履歴詳細</h1>
+<div class="order1">
+  <div>
+    <h3>注文情報</h3>
+    <table>
+      <tr>
+        <td>注文日</td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+      <tr>
+        <td>配送先</td>
+        <td><%= @order.address %></td>
+      </tr>
+      <tr>
+        <td>支払方法</td>
+        <td><%= @order.payment_method_i18n %></td>
+      </tr>
+      <tr>
+        <td>ステータス</td>
+        <td><%= @order.status %></td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <h3>請求情報</h3>
+    <table>
+      <tr>
+        <td>商品合計</td>
+        <td>
+          <% @num = 0 %>
+          <% @order_datails.each do |order_datail| %>
+          <% @num += order_datail.add_tax_price * order_datail.amount %>
+          <% end %>
+          <%= @num %>
+        </td>
+      </tr>
+      <tr>
+        <td>配送料</td>
+        <td><%= @order.shipping_cost %></td>
+      </tr>
+      <tr>
+        <td>ご請求額</td>
+        <td><%= @order.total_payment %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="order2">
+  <div>
+  <h3>注文内容</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>商品</th>
+        <th>単価(税込)</th>
+        <th>個数</th>
+        <th>小計</th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+    <% @order_datails.each do |order_datail| %>
+    <tbody>
+      <tr>
+        <td><%= order_datail.item.name %></td>
+        <td><%= order_datail.add_tax_price %></td>
+        <td><%= order_datail.amount %></td>
+        <td><%= order_datail.add_tax_price * order_datail.amount %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+  </div>
+</div>
