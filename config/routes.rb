@@ -1,20 +1,19 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :order_datails
-  end
-  namespace :admin do
+ 
     resources :orders
-  end
-  namespace :admin do
+  
+  
     resources :customers
-  end
-  namespace :admin do
+  
+  
     resources :genres
-  end
-  namespace :admin do
+  
+  
     resources :items
-  end
-  namespace :admin do
+  
+  
     get '/' => 'homes#top'
   end
 

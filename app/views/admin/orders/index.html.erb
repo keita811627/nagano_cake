@@ -1,0 +1,25 @@
+<h1>管理者側　注文一覧画面</h1>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <td>購入日時</td>
+        <td>購入者</td>
+        <td>注文個数</td>
+        <td>注文ステータス</td>
+        <td colspan="4"></td>
+      </tr>
+    </thead>
+    <% @orders.each do |order| %>
+    <table>
+      <tr>
+        <td><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+        <td><%= order.customer.last_name + order.customer.first_name %></td>
+        <td><%= order.order_datails.all.sum(:amount) %></td>
+        <td><%= order.status_i18n %></td>
+      </tr>
+    </table>
+    <% end %>
+  </table>
+</div>
